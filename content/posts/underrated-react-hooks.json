@@ -1,0 +1,91 @@
+{
+  "slug": "underrated-react-hooks",
+  "date": "2026-11-03",
+  "topic": "React",
+  "series": "Hidden React #1",
+  "title": "Stop using Math.random() for IDs.",
+  "sub": "Plus 2 more built-in hooks most codebases never use.",
+  "intro": "Hidden React #1: 3 built-in hooks most codebases never use.",
+  "tricks": [
+    {
+      "eyebrow": "Accessible forms",
+      "title": "Stable IDs with useId()",
+      "note": "Unique per component instance. Since <b>React 18</b>.",
+      "before": {
+        "label": "new ID every render, SSR mismatch",
+        "code": [
+          "const id = 'f-' + Math.random();",
+          "<label htmlFor={id}>Name</label>",
+          "<input id={id} />"
+        ],
+        "lang": "jsx"
+      },
+      "after": {
+        "label": "same ID on server and client",
+        "code": [
+          "const id = useId();",
+          "<label htmlFor={id}>",
+          "<input id={id} />"
+        ],
+        "lang": "jsx"
+      }
+    },
+    {
+      "eyebrow": "Fast search",
+      "title": "Search that never lags",
+      "note": "Wrap the slow list in <b>memo()</b> so typing stays instant.",
+      "before": {
+        "label": "manual debounce + effect",
+        "code": [
+          "const [q, set] = useState(query);",
+          "useEffect(() => {",
+          "  const t = setTimeout(() => set(query), 300);",
+          "  return () => clearTimeout(t);",
+          "}, [query]);"
+        ],
+        "lang": "jsx"
+      },
+      "after": {
+        "label": "no timer, no effect",
+        "code": [
+          "const q =",
+          "  useDeferredValue(query);"
+        ],
+        "lang": "jsx"
+      }
+    },
+    {
+      "eyebrow": "Heavy updates",
+      "title": "Keep clicks responsive",
+      "note": "Show a spinner while <b>isPending</b> is true.",
+      "before": {
+        "label": "urgent update, UI freezes",
+        "code": [
+          "function selectTab(next) {",
+          "  setTab(next); // heavy render",
+          "}",
+          "// clicks + typing blocked until done"
+        ],
+        "lang": "jsx"
+      },
+      "after": {
+        "label": "non-urgent, with a pending flag",
+        "code": [
+          "const [isPending, start] =",
+          "  useTransition();",
+          "start(() => setTab(next));"
+        ],
+        "lang": "jsx"
+      }
+    }
+  ],
+  "caption": "Stop using Math.random() for IDs.\n\nHidden React #1: 3 built-in hooks most codebases never use.\n\n1. useId() → stable, SSR-safe IDs for labels\n2. useDeferredValue() → search that doesn't lag, no debounce\n3. useTransition() → heavy updates without freezing clicks\n\nAll built in since React 18.\n\nWhich one will you try first? Comment 1, 2 or 3.\n\nSend this to your React teammate.\nSave this for later.",
+  "hashtags": "#reactjs #react #javascript #frontend #chennaidevelopers #tamilcoders #webdevelopment #developer",
+  "sources": [
+    "https://react.dev/reference/react/useId",
+    "https://react.dev/reference/react/useDeferredValue",
+    "https://react.dev/reference/react/useTransition"
+  ],
+  "alt": "Before and after slides: Math.random IDs replaced by useId, a manual debounce replaced by useDeferredValue, and a blocking tab update replaced by useTransition.",
+  "slides": 5
+}

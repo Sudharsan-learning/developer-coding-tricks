@@ -1,0 +1,64 @@
+{
+  "slug": "delete-these-packages",
+  "date": "2026-10-29",
+  "topic": "CSS/Web",
+  "series": null,
+  "title": "Delete These 3 npm Packages",
+  "sub": "The platform already does it. Zero installs.",
+  "intro": "You don't need these 3 npm packages anymore.",
+  "tricks": [
+    {
+      "eyebrow": "01 uuid",
+      "title": "uuid → randomUUID()",
+      "note": "Native v4 UUIDs in browsers (HTTPS) and Node 19+.",
+      "before": null,
+      "after": {
+        "label": "",
+        "code": [
+          "crypto.randomUUID()",
+          "// 'c21916bc-70e5-...'"
+        ],
+        "lang": "js"
+      }
+    },
+    {
+      "eyebrow": "02 moment",
+      "title": "moment → Intl",
+      "note": "Replaces moment's fromNow(). This prints 'yesterday'.",
+      "before": null,
+      "after": {
+        "label": "",
+        "code": [
+          "new Intl.RelativeTimeFormat(",
+          "  'en', {numeric:'auto'})",
+          "  .format(-1, 'day')"
+        ],
+        "lang": "js"
+      }
+    },
+    {
+      "eyebrow": "03 qs",
+      "title": "qs → URLSearchParams",
+      "note": "Build query strings from an object. Built in everywhere.",
+      "before": null,
+      "after": {
+        "label": "",
+        "code": [
+          "new URLSearchParams(",
+          "  { q: 'js', page: 2 })",
+          "  .toString() // q=js&page=2"
+        ],
+        "lang": "js"
+      }
+    }
+  ],
+  "caption": "You don't need these 3 npm packages anymore.\n\nuuid → crypto.randomUUID()\nmoment's fromNow() → Intl.RelativeTimeFormat\nqs → URLSearchParams\n\nFewer dependencies, smaller bundles, nothing to update.\n\nWhich one is still in your package.json?\n\nSend this to a teammate who still installs uuid.\nSave this for later.",
+  "hashtags": "#javascript #webdevelopment #nodejs #npm #chennaidevelopers #tamilcoders #frontend #codingtips",
+  "sources": [
+    "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat",
+    "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
+  ],
+  "alt": "Five dark code-editor slides showing native replacements for three npm packages: crypto.randomUUID for uuid, Intl.RelativeTimeFormat for moment, and URLSearchParams for qs.",
+  "slides": 5
+}

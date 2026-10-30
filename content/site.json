@@ -1,0 +1,23 @@
+{
+  "name": "Sudharsan A",
+  "brand": "Developer Coding Tricks",
+  "url": "https://developercodingtricks.vercel.app",
+  "email": "sudharsan77anbu@gmail.com",
+  "whatsapp": "",
+  "linkedin": "",
+  "instagram": "https://www.instagram.com/developer_coding_tricks/",
+  "handle": "@developer_coding_tricks",
+  "services": [
+    {
+      "title": "Web apps with React and Node",
+      "body": "Dashboards, internal tools, landing pages and full-stack apps that stay fast and are easy for your team to maintain.",
+      "includes": ["React and Next.js front ends", "Node.js APIs", "Deploys on Vercel or AWS"]
+    },
+    {
+      "title": "CRM and API integrations",
+      "body": "Connect your CRM, helpdesk and internal tools so data moves on its own, with no copy-pasting between systems.",
+      "includes": ["CRM and helpdesk integrations", "Webhooks and middleware", "Data sync and automation"]
+    }
+  ],
+  "projects": []
+}

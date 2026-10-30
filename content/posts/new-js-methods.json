@@ -1,0 +1,63 @@
+{
+  "slug": "new-js-methods",
+  "date": "2026-10-30",
+  "topic": "JavaScript",
+  "series": null,
+  "title": "3 New JS Methods You Missed",
+  "sub": "Added in ES2023-2025. Already in Node 22.",
+  "intro": "3 JavaScript methods most devs haven't noticed yet.",
+  "tricks": [
+    {
+      "eyebrow": "01 Set math",
+      "title": "Set.union()",
+      "note": "Union, intersection and difference are now built into Set (ES2025).",
+      "before": null,
+      "after": {
+        "label": "",
+        "code": [
+          "a.union(b)",
+          "a.intersection(b)",
+          "a.difference(b)"
+        ],
+        "lang": "js"
+      }
+    },
+    {
+      "eyebrow": "02 No mutation",
+      "title": "arr.toSorted()",
+      "note": "Returns a sorted copy. The original array stays the same (ES2023).",
+      "before": null,
+      "after": {
+        "label": "",
+        "code": [
+          "const s = arr.toSorted();",
+          "// arr is unchanged"
+        ],
+        "lang": "js"
+      }
+    },
+    {
+      "eyebrow": "03 Promises",
+      "title": "Promise.withResolvers()",
+      "note": "Get resolve() outside the Promise callback (ES2024).",
+      "before": null,
+      "after": {
+        "label": "",
+        "code": [
+          "const { promise, resolve }",
+          "  = Promise.withResolvers();"
+        ],
+        "lang": "js"
+      }
+    }
+  ],
+  "caption": "3 JavaScript methods most devs haven't noticed yet.\n\nSet.union() and friends for set math (ES2025)\narr.toSorted() for sorting without mutation (ES2023)\nPromise.withResolvers() for cleaner async code (ES2024)\n\nAll work in Node 22+ and current browsers.\n\nWhich one will you use first?\n\nSave this for later.",
+  "hashtags": "#javascript #webdevelopment #nodejs #coding #programming #developer #codingtips #learnjavascript",
+  "sources": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/union",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers"
+  ],
+  "alt": "Five dark code-editor slides showing three newer JavaScript methods: Set.union, Array toSorted and Promise.withResolvers, with short code examples.",
+  "slides": 5
+}

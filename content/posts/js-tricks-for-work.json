@@ -1,0 +1,92 @@
+{
+  "slug": "js-tricks-for-work",
+  "date": "2026-11-02",
+  "topic": "JavaScript",
+  "series": "Hidden JS #1",
+  "title": "Stop writing formatLakhs() by hand.",
+  "sub": "Plus fetch timeouts and errors that keep their cause.",
+  "intro": "Hidden JS #1: 3 built-ins that delete code you wrote.",
+  "tricks": [
+    {
+      "eyebrow": "Indian number format",
+      "title": "12,34,567 is built in",
+      "note": "Add <b>currency: 'INR'</b> for ₹12,34,567.00",
+      "before": {
+        "label": "7 lines, integers only",
+        "code": [
+          "function formatLakhs(n) {",
+          "  const s = String(n);",
+          "  const last3 = s.slice(-3);",
+          "  const rest = s.slice(0, -3)",
+          "    .replace(/\\B(?=(\\d{2})+$)/g, ',');",
+          "  return rest ? rest + ',' + last3 : last3;",
+          "}"
+        ],
+        "lang": "js"
+      },
+      "after": {
+        "label": "1 line, decimals too",
+        "code": [
+          "new Intl.NumberFormat(",
+          "  'en-IN').format(n)"
+        ],
+        "lang": "js"
+      }
+    },
+    {
+      "eyebrow": "Fetch timeouts",
+      "title": "Fetch timeout in 1 line",
+      "note": "Throws a <b>TimeoutError</b> you can catch. Node 18+ and modern browsers.",
+      "before": {
+        "label": "controller + timer + cleanup",
+        "code": [
+          "const c = new AbortController();",
+          "const t = setTimeout(() => c.abort(), 5000);",
+          "await fetch(url, { signal: c.signal })",
+          "  .finally(() => clearTimeout(t));"
+        ],
+        "lang": "js"
+      },
+      "after": {
+        "label": "nothing to clean up",
+        "code": [
+          "await fetch(url, { signal:",
+          "  AbortSignal.timeout(5000) })"
+        ],
+        "lang": "js"
+      }
+    },
+    {
+      "eyebrow": "Debugging",
+      "title": "Errors that keep their cause",
+      "note": "Node prints the full <b>[cause]</b> chain in the stack trace.",
+      "before": {
+        "label": "custom field nobody knows about",
+        "code": [
+          "catch (err) {",
+          "  const e = new Error('Failed');",
+          "  e.original = err; throw e;",
+          "}"
+        ],
+        "lang": "js"
+      },
+      "after": {
+        "label": "standard since ES2022",
+        "code": [
+          "throw new Error('Failed',",
+          "  { cause: err });"
+        ],
+        "lang": "js"
+      }
+    }
+  ],
+  "caption": "Stop writing formatLakhs() by hand.\n\nHidden JS #1: 3 built-ins that delete code you wrote.\n\n1. Intl.NumberFormat('en-IN') → 12,34,567 and ₹ formatting\n2. AbortSignal.timeout(5000) → fetch timeouts, no cleanup\n3. new Error(msg, { cause }) → keep the original error\n\nWhich one goes in your next PR? Comment 1, 2 or 3.\n\nSend this to the teammate who wrote formatLakhs().\nSave this for later.",
+  "hashtags": "#javascript #nodejs #webdevelopment #chennaidevelopers #tamilcoders #codingtips #programming #developer",
+  "sources": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat",
+    "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout_static",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause"
+  ],
+  "alt": "Before and after slides: a hand-written lakhs formatter replaced by Intl.NumberFormat en-IN, AbortController timeout code replaced by AbortSignal.timeout, and a custom error field replaced by Error cause.",
+  "slides": 5
+}

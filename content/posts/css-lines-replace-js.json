@@ -1,0 +1,94 @@
+{
+  "slug": "css-lines-replace-js",
+  "date": "2026-11-01",
+  "topic": "CSS/Web",
+  "series": "Hidden CSS #1",
+  "title": "Your textarea doesn't need JavaScript.",
+  "sub": "Plus 2 more old hacks you can delete with one line of CSS.",
+  "intro": "Hidden CSS #1: 3 old hacks you can delete today.",
+  "tricks": [
+    {
+      "eyebrow": "Auto-grow textarea",
+      "title": "Stop resizing it with JS",
+      "note": "Support: <b>Chrome & Edge 123+</b>. Other browsers just keep a normal textarea.",
+      "before": {
+        "label": "5 lines of JS",
+        "code": [
+          "const t = document.querySelector('textarea');",
+          "t.addEventListener('input', () => {",
+          "  t.style.height = 'auto';",
+          "  t.style.height = t.scrollHeight + 'px';",
+          "});"
+        ],
+        "lang": "js"
+      },
+      "after": {
+        "label": "1 line of CSS",
+        "code": [
+          "textarea {",
+          "  field-sizing: content;",
+          "}"
+        ],
+        "lang": "css"
+      }
+    },
+    {
+      "eyebrow": "Headings",
+      "title": "No more manual <br> tags",
+      "note": "Lines get even lengths at <b>any width</b>. Works in all modern browsers.",
+      "before": {
+        "label": "breaks on every screen size",
+        "code": [
+          "<h1>",
+          "  Delete these three npm<br>",
+          "  packages today",
+          "</h1>"
+        ],
+        "lang": "html"
+      },
+      "after": {
+        "label": "1 line of CSS",
+        "code": [
+          "h1, h2 {",
+          "  text-wrap: balance;",
+          "}"
+        ],
+        "lang": "css"
+      }
+    },
+    {
+      "eyebrow": "Checkboxes & radios",
+      "title": "Brand colors in one line",
+      "note": "Keeps the native checkmark, focus ring and <b>accessibility</b>.",
+      "before": {
+        "label": "rebuild it + draw a checkmark",
+        "code": [
+          "input[type=checkbox] {",
+          "  appearance: none;",
+          "  border: 2px solid #39C5CF;",
+          "}",
+          "input:checked { background: #39C5CF; }"
+        ],
+        "lang": "css"
+      },
+      "after": {
+        "label": "1 line of CSS",
+        "code": [
+          "input {",
+          "  accent-color: #39C5CF;",
+          "}"
+        ],
+        "lang": "css"
+      }
+    }
+  ],
+  "caption": "Your textarea doesn't need JavaScript.\n\nHidden CSS #1: 3 old hacks you can delete today.\n\n1. Auto-grow textarea → field-sizing: content (Chrome & Edge 123+)\n2. Manual <br> in headings → text-wrap: balance\n3. Rebuilt checkboxes → accent-color\n\nWhich one goes in your next PR? Comment 1, 2 or 3.\n\nSend this to your frontend teammate.\nSave this for later.",
+  "hashtags": "#css #webdevelopment #frontend #webdesign #chennaidevelopers #tamilcoders #codingtips #developer",
+  "sources": [
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color"
+  ],
+  "alt": "Before and after slides: 5 lines of JavaScript replaced by field-sizing content, manual br tags replaced by text-wrap balance, and a rebuilt checkbox replaced by accent-color.",
+  "slides": 5
+}
