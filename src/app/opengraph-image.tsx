@@ -2,8 +2,8 @@ import { ogImage, ogSize } from "@/lib/og";
 
 export const size = ogSize;
 export const contentType = "image/png";
-export const alt = "Developer Coding Tricks: delete code you didn't need to write";
+export const alt = "Sudharsan A: I help developers write less code";
 
 export default function Image() {
-  return ogImage({ kicker: "dev tricks + freelance", title: "Delete code you didn’t need to write." });
+  return ogImage({ kicker: "developer + freelancer", title: "Sudharsan A: I help developers write less code." });
 }

@@ -20,6 +20,7 @@ export default function HeroDiff({ demos }: { demos: DiffDemo[] }) {
   const [added, setAdded] = useState(0);
   const [still, setStill] = useState(false);
   const timers = useRef<number[]>([]);
+  const firstRun = useRef(true);
   const demo = demos[i];
 
   const clear = () => {
@@ -42,7 +43,9 @@ export default function HeroDiff({ demos }: { demos: DiffDemo[] }) {
       setPhase("idle");
       setStruck(0);
       setAdded(0);
-      let t = 900;
+      // The first run waits for the logo loader to lift, unless it was skipped this visit.
+      let t = 900 + (firstRun.current && !document.documentElement.classList.contains("booted") ? 1500 : 0);
+      firstRun.current = false;
       at(t, () => setPhase("striking"));
       d.before.forEach((_, n) => {
         t += 170;

@@ -38,10 +38,19 @@ export function topics(posts: Post[]) {
   return [...new Set(posts.map((p) => p.topic))].sort();
 }
 
+/** Today's date in IST as YYYY-MM-DD, comparable with post dates. */
+const todayIST = () => new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+
+/** A post dated after today is scheduled: its page exists, but it isn't on Instagram yet. */
+export const isPublished = (p: Post) => p.date <= todayIST();
+
+export function getPublished(): Post[] {
+  return getPosts().filter(isPublished);
+}
+
 export function formatDate(iso: string) {
   const d = new Date(iso + "T00:00:00");
-  const today = new Date(new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" }) + "T00:00:00");
-  if (d > today) return `On Instagram ${d.toLocaleDateString("en-IN", { day: "numeric", month: "short" })}`;
+  if (iso > todayIST()) return `On Instagram ${d.toLocaleDateString("en-IN", { day: "numeric", month: "short" })}`;
   return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 }
 

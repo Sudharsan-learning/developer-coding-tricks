@@ -1,16 +1,25 @@
 import Link from "next/link";
-import { site } from "@/lib/posts";
+import { getPosts, site, topicLabel } from "@/lib/posts";
+import CommandPalette from "./CommandPalette";
+import Logo from "./Logo";
 
 export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="wrap header-in">
         <Link href="/" className="logo" aria-label="Developer Coding Tricks, home">
-          <span className="logo-prompt" aria-hidden="true">$</span> developer_coding_tricks
+          <Logo size={26} /> developer_coding_tricks
         </Link>
         <nav aria-label="Main">
+          <Link href="/#about">About</Link>
+          <Link href="/#experience" className="nav-wide">Experience</Link>
           <Link href="/tips">Tips</Link>
           <Link href="/#hire">Hire me</Link>
+          <CommandPalette
+            tips={getPosts().map((p) => ({ slug: p.slug, title: p.title, sub: p.sub, topic: p.series ?? topicLabel(p.topic) }))}
+            email={site.email}
+            links={[["LinkedIn", site.linkedin], ["GitHub", site.github], ["Instagram", site.instagram]].filter(([, h]) => h).map(([label, href]) => ({ label, href }))}
+          />
           <Link href="/#contact" className="btn btn-sm">Contact</Link>
         </nav>
       </div>
@@ -31,6 +40,9 @@ export function ContactLinks({ large = false }: { large?: boolean }) {
       {site.linkedin && (
         <a className={cls} href={site.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a>
       )}
+      {site.github && (
+        <a className={cls} href={site.github} rel="noopener noreferrer" target="_blank">GitHub</a>
+      )}
       {site.instagram && (
         <a className={cls} href={site.instagram} rel="noopener noreferrer" target="_blank">Message on Instagram</a>
       )}
@@ -43,10 +55,12 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="wrap footer-in">
         <p>
-          © {new Date().getFullYear()} {site.name}. Tips are free to use in your own code.
+          © {new Date().getFullYear()} {site.name}. Software developer and freelancer. Tips are free to use in your own code.
         </p>
         <nav aria-label="Footer">
+          <Link href="/#about">About</Link>
           <Link href="/tips">All tips</Link>
+          <a href={`mailto:${site.email}`}>Email</a>
           <a href={site.instagram} rel="noopener noreferrer" target="_blank">Instagram</a>
           <Link href="/privacy">Privacy</Link>
         </nav>

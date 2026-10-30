@@ -11,11 +11,11 @@ export async function ogImage(opts: { kicker: string; title: string; removed?: n
   const [regular, bold] = await Promise.all([font(400), font(700)]);
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "64px 72px", background: "#0D1117", color: "#E6EDF3", fontFamily: "Fira Code" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "64px 72px", background: "#000000", color: "#E6EDF3", fontFamily: "Fira Code" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, color: "#8B949E" }}>
-          <span style={{ color: "#58A6FF", fontWeight: 700 }}>$</span>
+          <span style={{ color: "#5CC6E4", fontWeight: 700 }}>$</span>
           <span>developer_coding_tricks</span>
-          <span style={{ marginLeft: "auto", color: "#39C5CF" }}>{opts.kicker}</span>
+          <span style={{ marginLeft: "auto", color: "#5CC6E4" }}>{opts.kicker}</span>
         </div>
         <div style={{ display: "flex", fontSize: opts.title.length > 42 ? 62 : 74, fontWeight: 700, lineHeight: 1.12, letterSpacing: -1.5 }}>{opts.title}</div>
         <div style={{ display: "flex", alignItems: "center", gap: 22, fontSize: 34 }}>

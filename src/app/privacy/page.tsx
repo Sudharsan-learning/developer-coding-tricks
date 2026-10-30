@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/posts";
 
-export const metadata: Metadata = { title: "Privacy policy", alternates: { canonical: "/privacy" } };
+export const metadata: Metadata = {
+  title: "Privacy policy",
+  description: `How ${site.brand} handles data: no accounts or tracking forms, optional Google AdSense, and Vercel server logs.`,
+  alternates: { canonical: "/privacy" },
+};
 
 export default function Privacy() {
   return (

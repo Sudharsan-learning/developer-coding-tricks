@@ -29,10 +29,16 @@ Adding a tip = add its JSON + slides and push. Vercel rebuilds on every push.
 2. Project name `developercodingtricks` gives `developercodingtricks.vercel.app`.
 3. Optional: create a Deploy Hook and save it as the GitHub secret `VERCEL_DEPLOY_HOOK` (see `.github/workflows/daily-rebuild.yml`).
 
-## Ads
+## Environment variables (Vercel)
 
-Set the env var `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX` in Vercel to turn on AdSense slots.
-AdSense needs a domain you own, so add a custom domain in Vercel first. A privacy page is included at `/privacy`.
+| Name | What it does |
+| --- | --- |
+| `GOOGLE_SITE_VERIFICATION` | Search Console "HTML tag" code. Adds the verification meta tag. |
+| `NEXT_PUBLIC_ADSENSE_CLIENT` | `ca-pub-…` id. Turns on AdSense slots. Needs a custom domain first, so leave it unset on `vercel.app`. |
+
+The site currently runs on `developercodingtricks.vercel.app` with no custom domain. See
+[docs/deployment-checklist.md](docs/deployment-checklist.md) for Search Console setup and the full pre-deploy checklist,
+and run `npm run audit:site -- <url>` to check SEO tags and security headers.
 
 ## SEO
 

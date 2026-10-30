@@ -4,20 +4,265 @@
   "url": "https://developercodingtricks.vercel.app",
   "email": "sudharsan77anbu@gmail.com",
   "whatsapp": "",
-  "linkedin": "",
+  "linkedin": "https://www.linkedin.com/in/sudharsan-anbarasan/",
+  "github": "",
   "instagram": "https://www.instagram.com/developer_coding_tricks/",
   "handle": "@developer_coding_tricks",
-  "services": [
+  "role": "Senior Software Development Engineer (SDE-3)",
+  "roleShort": "Senior SDE-3",
+  "location": "Chennai, India",
+  "available": true,
+  "resume": "",
+  "bio": [
+    "I’m a senior software engineer in Chennai with 5+ years of frontend and full-stack work. At Arbaan GT I build Freshworks apps and the integrations around them. Before that, I led a headless e-commerce build at Thilash Services.",
+    "On Instagram I run @developer_coding_tricks: one tested trick a day that replaces a block of code with the line JavaScript, React or CSS already gives you. Every snippet is run before it’s posted.",
+    "I also take freelance projects: websites and React apps with SEO done properly, AI automations with Claude Code, Cowork and scheduled tasks, Freshdesk and Freshservice apps, and integrations that keep your CRM, helpdesk and internal tools in sync."
+  ],
+  "stats": [
     {
-      "title": "Web apps with React and Node",
-      "body": "Dashboards, internal tools, landing pages and full-stack apps that stay fast and are easy for your team to maintain.",
-      "includes": ["React and Next.js front ends", "Node.js APIs", "Deploys on Vercel or AWS"]
-    },
-    {
-      "title": "CRM and API integrations",
-      "body": "Connect your CRM, helpdesk and internal tools so data moves on its own, with no copy-pasting between systems.",
-      "includes": ["CRM and helpdesk integrations", "Webhooks and middleware", "Data sync and automation"]
+      "label": "Years building",
+      "value": "5+"
     }
   ],
-  "projects": []
+  "skills": [
+    {
+      "group": "ai",
+      "items": [
+        "Claude",
+        "Claude Code",
+        "Claude Cowork",
+        "Scheduled AI tasks",
+        "Vibe coding",
+        "AI automation",
+        "OpenAI API",
+        "Prompt engineering"
+      ]
+    },
+    {
+      "group": "frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript (ES6+)",
+        "Tailwind CSS",
+        "Redux Saga",
+        "React Table",
+        "SASS",
+        "TanStack Query"
+      ]
+    },
+    {
+      "group": "websites",
+      "items": [
+        "Website building",
+        "Landing pages",
+        "Technical SEO",
+        "Core Web Vitals",
+        "Schema markup",
+        "Vercel"
+      ]
+    },
+    {
+      "group": "backend",
+      "items": [
+        "Node.js",
+        "NestJS",
+        "PostgreSQL",
+        "SQL",
+        "REST APIs",
+        "Strapi CMS",
+        "Headless WordPress",
+        "Redis",
+        "NextAuth",
+        "SSO (OIDC / SAML)"
+      ]
+    },
+    {
+      "group": "freshworks",
+      "items": [
+        "Freshdesk",
+        "Freshservice",
+        "FDK",
+        "Marketplace apps",
+        "Serverless apps"
+      ]
+    },
+    {
+      "group": "cloud",
+      "items": [
+        "AWS Lambda",
+        "Amazon S3",
+        "Serverless",
+        "CI/CD",
+        "Docker",
+        "Kubernetes (GKE)",
+        "GitLab CI"
+      ]
+    },
+    {
+      "group": "tools",
+      "items": [
+        "Git",
+        "Figma",
+        "Workflow automation"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "Websites and web apps",
+      "body": "Business websites, landing pages, dashboards and full-stack apps that load fast and rank well from day one.",
+      "includes": [
+        "React and Next.js builds",
+        "Technical SEO and schema markup",
+        "Core Web Vitals tuning"
+      ]
+    },
+    {
+      "title": "AI automations",
+      "body": "Put Claude to work on the repetitive parts of your business: scheduled reports, inbox and ticket triage, and content drafts.",
+      "includes": [
+        "Claude Code and Claude Cowork workflows",
+        "Scheduled AI tasks",
+        "OpenAI and Claude API integrations"
+      ]
+    },
+    {
+      "title": "Freshworks apps",
+      "body": "Custom and marketplace apps for Freshdesk and Freshservice, built with the Freshworks Developer Kit.",
+      "includes": [
+        "Custom and marketplace apps",
+        "Serverless apps and Freshworks APIs",
+        "Customer-facing support portals"
+      ]
+    },
+    {
+      "title": "CRM, API and data integrations",
+      "body": "Connect your CRM, helpdesk and business systems so data moves on its own, including large one-time migrations.",
+      "includes": [
+        "REST APIs, webhooks and middleware",
+        "Data migration and validation",
+        "Node.js and NestJS services"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Software Development Engineer (SDE-3)",
+      "company": "Arbaan GT Private Limited",
+      "location": "Chennai, India",
+      "start": "Jul 2022",
+      "end": "Present",
+      "points": [
+        "Build custom and marketplace apps on the Freshworks platform with React, Node.js and the Freshworks Developer Kit.",
+        "Integrate Freshdesk and Freshservice with external business systems using REST APIs and serverless architecture.",
+        "Led an enterprise migration that synced and validated 80,000+ employee, project and asset records into Freshservice.",
+        "Built Leads, Deals, Contacts and Invoices modules on Strapi CMS, and added OpenAI-powered content automation.",
+        "Do code reviews, debugging, performance work and production support."
+      ]
+    },
+    {
+      "role": "Senior Developer",
+      "company": "Thilash Services Private Limited",
+      "location": "Chennai, India",
+      "start": "Jul 2020",
+      "end": "Jul 2022",
+      "points": [
+        "Led the 12-month build of a headless e-commerce platform with Next.js, React, Tailwind CSS and REST APIs, cutting client-side load times.",
+        "Redesigned the interfaces in Figma and improved Core Web Vitals and technical SEO.",
+        "Built an internal Customer Information Dashboard with React Hooks and React Table for filtering large client datasets.",
+        "Named Best Associate of the Month (August 2021) for debugging and issue resolution."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "developer_coding_tricks website",
+      "body": "This site: a fast, fully static Next.js site that turns each Instagram tip into a searchable, copyable page. Built with Claude Code, with SEO and security headers set up from the start.",
+      "link": "https://developercodingtricks.vercel.app",
+      "tags": [
+        "Next.js",
+        "Claude Code",
+        "Vibe coding",
+        "Technical SEO",
+        "Schema markup"
+      ]
+    },
+    {
+      "title": "Custom Freshservice support portal",
+      "body": "A branded self-service portal on top of Freshservice. People sign in with company SSO, raise incidents and service requests, track and filter their tickets, read announcements, and escalate tickets that need attention. Available in English, French and Dutch.",
+      "result": "Runs on Kubernetes across dev, QA and production",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Freshservice",
+        "SSO (OIDC / SAML)",
+        "Redis",
+        "Docker",
+        "Kubernetes (GKE)"
+      ]
+    },
+    {
+      "title": "Enterprise data migration to Freshservice",
+      "body": "Custom middleware that synced and validated employee, project and asset records from existing systems into Freshservice.",
+      "result": "80,000+ records migrated",
+      "tags": [
+        "Freshservice",
+        "Node.js",
+        "REST APIs"
+      ]
+    },
+    {
+      "title": "Headless e-commerce platform",
+      "body": "Led a 12-month build of a fast storefront on a headless back end, with a Figma redesign and Core Web Vitals and SEO work.",
+      "result": "Lower client-side load times",
+      "tags": [
+        "Next.js",
+        "React",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "title": "Freshdesk customer support app",
+      "body": "A customer-facing support app integrated with Freshdesk, running on serverless AWS.",
+      "tags": [
+        "Freshdesk",
+        "AWS Lambda",
+        "Amazon S3"
+      ]
+    },
+    {
+      "title": "CRM modules with AI content",
+      "body": "Leads, Deals, Contacts and Invoices modules on Strapi CMS, with OpenAI generating business content.",
+      "tags": [
+        "Strapi CMS",
+        "OpenAI API",
+        "JavaScript (ES6+)"
+      ]
+    },
+    {
+      "title": "Customer Information Dashboard",
+      "body": "An internal dashboard for managing and filtering large client datasets smoothly.",
+      "tags": [
+        "React",
+        "React Table"
+      ]
+    }
+  ],
+  "education": {
+    "degree": "B.E. Mechanical Engineering",
+    "school": "Kongunadu College of Engineering and Technology",
+    "years": "2016 – 2020"
+  },
+  "achievements": [
+    {
+      "title": "Best Associate of the Month",
+      "detail": "Thilash Services, August 2021"
+    }
+  ],
+  "languages": [
+    "English (professional)",
+    "Tamil (native)"
+  ]
 }

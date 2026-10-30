@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CodeBlock from "@/components/CodeBlock";
 import { AdSlot, ContactLinks } from "@/components/Chrome";
-import { diffStat, formatDate, getPost, getPosts, site, topicLabel } from "@/lib/posts";
+import { diffStat, formatDate, getPost, getPosts, isPublished, site, topicLabel } from "@/lib/posts";
+import { jsonLd as toJsonLd, safeNote } from "@/lib/safe";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,11 +16,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = getPost((await params).slug);
   if (!p) return {};
+  const description = `${p.intro} ${p.sub} Tested before-and-after code you can copy.`;
   return {
     title: p.title,
-    description: `${p.sub} Tested before-and-after code.`,
+    description,
     alternates: { canonical: `/tips/${p.slug}` },
-    openGraph: { type: "article", title: p.title, description: p.sub, publishedTime: p.date },
+    // Scheduled tips stay out of search until their Instagram date; the daily rebuild flips this.
+    robots: isPublished(p) ? undefined : { index: false, follow: true },
+    openGraph: { type: "article", url: `/tips/${p.slug}`, title: p.title, description, publishedTime: p.date, authors: [site.name], tags: [topicLabel(p.topic)] },
+    twitter: { title: p.title, description },
   };
 }
 
@@ -31,15 +36,32 @@ export default async function TipPage({ params }: Props) {
   const newer = posts[idx - 1];
   const older = posts[idx + 1];
   const { removed, added } = diffStat(p);
+  const url = `${site.url}/tips/${p.slug}`;
   const jsonLd = {
-    "@context": "https://schema.org", "@type": "TechArticle", headline: p.title, description: p.sub,
-    datePublished: p.date, author: { "@type": "Person", name: site.name, url: site.url },
-    image: `${site.url}/tips/${p.slug}/slide-1.jpg`, mainEntityOfPage: `${site.url}/tips/${p.slug}`,
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle", headline: p.title, description: `${p.intro} ${p.sub}`, inLanguage: "en-IN",
+        datePublished: p.date, dateModified: p.date, about: topicLabel(p.topic),
+        keywords: p.tricks.map((t) => t.title).join(", "),
+        author: { "@type": "Person", name: site.name, url: site.url },
+        publisher: { "@type": "Organization", name: site.brand, url: site.url, logo: `${site.url}/favicon.svg` },
+        image: `${site.url}/tips/${p.slug}/slide-1.jpg`, mainEntityOfPage: url,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          { "@type": "ListItem", position: 2, name: "Tips", item: `${site.url}/tips` },
+          { "@type": "ListItem", position: 3, name: p.title, item: url },
+        ],
+      },
+    ],
   };
 
   return (
     <article className="wrap article page-top">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toJsonLd(jsonLd) }} />
       <header className="article-head">
         <p className="article-meta">
           <Link href="/tips">{p.series ?? topicLabel(p.topic)}</Link>
@@ -59,7 +81,7 @@ export default async function TipPage({ params }: Props) {
           <p className="trick-eyebrow">{t.eyebrow}</p>
           {t.before && <CodeBlock kind="before" sample={t.before} />}
           <CodeBlock kind="after" sample={t.after} />
-          <p className="note" dangerouslySetInnerHTML={{ __html: t.note }} />
+          <p className="note" dangerouslySetInnerHTML={{ __html: safeNote(t.note) }} />
         </section>
       ))}
 
